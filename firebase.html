@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Firebase example</title>
+
+	<!-- installs the firebase client -->
+	<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+
+	<form id="">
+		<label>Your username: </label><input type="text" id="userName">
+	</form>
+
+	<script>
+
+	var invalidUser=['bajs','kiss','fitta','kuk','slida','anus'];
+      
+      var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
+      $('#userName').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#userName').val();
+
+		for (var i = 0;i<invalidUser;i++) {
+			if (name === invalidUser) {
+				alert('Not a valid username, please rename yourself')
+			}
+
+			else {
+				myDataRef.push({name: name})
+			}
+
+        }
+      });
+
+    </script>
+
+</body>
+</html>
