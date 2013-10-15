@@ -16,31 +16,27 @@
 
 	<script>
 
-	var invalidUser=['bajs','kiss','fitta','kuk','slida','anus'];
-
-	for (var i = 0;i<invalidUser;i++) {}
+	var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar'];
       
-      var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
+    var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
 
-      $('#userName').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#userName').val();
+    $('#userName').keypress(function (e) {
+    	if (e.keyCode == 13) {
+        var name = $('#userName').val();
 
-          		if (invalidUser[i] === name) {
-          			alert('Not a valid username')
-
-          		}
-
-          		else
-          		
-          		{
-          			myDataRef.push({name: name});
-          		}
-          	}
-          
-      });
+        if ($.inArray(name, invalidUser) != -1) {
+            alert('Not a valid username')
+        }
+        else {
+            var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
+            myDataRef.push({ name: name });
+        }
+    }
+});
 
     </script>
+
+
 
 </body>
 </html>
