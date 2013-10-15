@@ -13,7 +13,7 @@ body {
 	border: solid black;
 	border-radius: 7px;
 	position: relative;
-	width: 300px;
+	width: 280px;
 	height: 150px;
 	z-index: 99;
 	color: #fff;
@@ -23,7 +23,7 @@ body {
 }
 
 .box {
-width: 100px;
+width: 150px;
 height: 15px;
 background-color: rgba(235,235,235,0.7);
 font-family: tahoma;
