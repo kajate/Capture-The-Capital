@@ -18,7 +18,7 @@ function initialize() {
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'This is you'
+        content: 'This is You'
       });
 
       map.setCenter(pos);
