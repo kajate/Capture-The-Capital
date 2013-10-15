@@ -14,7 +14,7 @@ body {
 	border-radius: 7px;
 	position: relative;
 	width: 300px;
-	height: 250px;
+	height: 150px;
 	z-index: 99;
 	color: #fff;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
@@ -23,7 +23,7 @@ body {
 }
 
 .box {
-width: 150px;
+width: 100px;
 height: 15px;
 background-color: rgba(235,235,235,0.7);
 font-family: tahoma;
@@ -31,18 +31,24 @@ border-radius: 7px;
 border: solid black;
 font-size: small;
 color: rgba(0,0,0,0.7);
+margin-top: 15px;
+}
+
+.flagimages {
+    margin-top: 15px;
 }
 
 .button {
     border: 3px solid #000;
     background-color: rgba(235,235,235,0.7);
     border-radius: 7px;
+    margin-top: 15px;
 
 }
 
 
 .fade {
-    margin-top: 130px;
+    margin-top: 330px;
     font-size: 17px;
     text-align: center;
     animation: fadein 2s;

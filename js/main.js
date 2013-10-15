@@ -18,7 +18,7 @@ function initialize() {
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'You'
+        content: 'This is you'
       });
 
       map.setCenter(pos);
@@ -33,7 +33,7 @@ function initialize() {
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
+    var content = 'This is not where you are, right?';
   } else {
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
