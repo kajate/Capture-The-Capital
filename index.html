@@ -10,6 +10,8 @@
 
 
 	<script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+	<script src='js/main.js'></script>
   <!--[if lte IE 8]>
     <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
     <![endif]-->
@@ -18,7 +20,7 @@
     	margin:0; padding:0;
     }
 
-    #map {
+    #map-canvas {
     	position:absolute; top:0; bottom:0; width:100%;
     	z-index: 1;
     }
@@ -27,8 +29,8 @@
     </style>
 </head>
 <body>
-	<div class="startbox fade"><br><br>
-		<img src="images/flag.png" height="72" width="72"><br><br><br><br>
+	<div class="startbox fade">
+		<div class="flagimages"><img src="images/flag.png" height="72" width="72"></div>
 		<form action=""><input type="text" value="And you are..." class="box" />
     <input type="submit" value="CAPTURE!" class="button" />
 </form>
@@ -36,12 +38,8 @@
 
 	</div>
 
-	<div id='map'></div>
-	<script type='text/javascript'>
-	var map = L.mapbox.map('map', 'kajate.map-ekjrf9id');
-
-
-	</script>
+	<div id="map-canvas"></div>
+	
 
 </body>
 </html>
