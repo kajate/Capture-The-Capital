@@ -1,0 +1,1 @@
+var map = L.mapbox.map('map', 'kajate.map-ekjrf9id');
