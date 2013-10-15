@@ -1,10 +1,9 @@
-
 var map;
 
 function initialize() {
+
   var mapOptions = {
     zoom: 13,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -31,6 +30,28 @@ function initialize() {
   }
 }
 
+var styles = [
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "invert_lightness": true },
+      { "gamma": 0.01 },
+      { "hue": "#e500ff" }
+    ]
+  },{
+    "elementType": "geometry",
+    "stylers": [
+      { "hue": "#00fff7" }
+    ]
+  },{
+    "stylers": [
+      { "gamma": 0.78 },
+      { "visibility": "on" },
+      { "invert_lightness": true }
+    ]
+  }
+]
+
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
     var content = 'This is not where you are, right?';
@@ -46,6 +67,7 @@ function handleNoGeolocation(errorFlag) {
 
   var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
+  map.setOptions({styles: styles});
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
