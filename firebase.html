@@ -17,22 +17,27 @@
 	<script>
 
 	var invalidUser=['bajs','kiss','fitta','kuk','slida','anus'];
+
+	for (var i = 0;i<invalidUser;i++) {}
       
       var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
+
       $('#userName').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#userName').val();
 
-		for (var i = 0;i<invalidUser;i++) {
-			if (name === invalidUser) {
-				alert('Not a valid username, please rename yourself')
-			}
+          		if (invalidUser[i] === name) {
+          			alert('Not a valid username')
 
-			else {
-				myDataRef.push({name: name})
-			}
+          		}
 
-        }
+          		else
+          		
+          		{
+          			myDataRef.push({name: name});
+          		}
+          	}
+          
       });
 
     </script>
