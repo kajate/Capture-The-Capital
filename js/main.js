@@ -8,7 +8,6 @@ function initialize() {
 
   
 
-  // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
@@ -25,7 +24,6 @@ function initialize() {
       handleNoGeolocation(true);
     });
   } else {
-    // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
 }
