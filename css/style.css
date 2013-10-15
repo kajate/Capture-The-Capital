@@ -9,14 +9,14 @@ body {
 
 .startbox {
 	margin: 100px auto;
-	background-color: rgba(17,55,0,0.7);
+	background-color: rgba(249,122,249,0.7);
 	border: solid black;
 	border-radius: 7px;
 	position: relative;
 	width: 280px;
 	height: 150px;
 	z-index: 99;
-	color: #fff;
+	color: #000;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
     font-size: small;
     text-shadow: 2px 2px #000000;
