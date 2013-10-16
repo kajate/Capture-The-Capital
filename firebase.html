@@ -14,23 +14,29 @@
 		<label>Your username: </label><input type="text" id="userName">
 	</form>
 
+
+
 <p id="demo">Click the button to get your coordinates:</p>
-<button onclick="getLocation()">Try It</button>
-<script>
-var x=document.getElementById("demo");
-function getLocation()
-  {
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
-    }
-  else{x.innerHTML="Geolocation is not supported by this browser.";}
-  }
-function showPosition(position)
-  {
-  x.innerHTML="Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;    
-  }
+<button onclick="startGeolocation()">Try It</button>
+    
+    <script type="text/javascript">
+    var x=document.getElementById("demo");
+        function startGeolocation() {
+        var options;
+        navigator.geolocation.getCurrentPosition(geoSuccess, options);
+        setTimeout(startGeolocation, 1000);
+        }
+
+        function geoSuccess(position) {
+        var gpsPosition = position;
+        var coordinates = gpsPosition.coords;
+        myLat = coordinates.latitude;
+        myLong = coordinates.longitude;
+        x.innerHTML="Latitude: " + myLat + 
+        "<br>Longitude: " + myLong;
+
+}
+
 </script>
 
 	<script>
