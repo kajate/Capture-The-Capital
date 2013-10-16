@@ -1,14 +1,13 @@
-var map;
-
 function initialize() {
 
   var mapOptions = {
-    zoom: 13,
+    zoom: 3,
   };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
+  map = new google.maps.Map(document.getElementById('mapCanvas'),
       mapOptions);
 
-  // Try HTML5 geolocation
+  
+
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
@@ -17,7 +16,7 @@ function initialize() {
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'This is You'
+        content: 'This is you'
       });
 
       map.setCenter(pos);
@@ -25,18 +24,21 @@ function initialize() {
       handleNoGeolocation(true);
     });
   } else {
-    // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
 }
 
-var styles = [
-  {
+var MY_MAPTYPE_ID = 'custom_style';
+
+function initialize(userPosition) {
+  mapOnSite=false;
+  var featureOpts = [
+    {
     "elementType": "labels.text.fill",
     "stylers": [
       { "invert_lightness": true },
       { "gamma": 0.01 },
-      { "hue": "#e500ff" }
+      { "hue": "#e50000" }
     ]
   },{
     "elementType": "geometry",
@@ -50,25 +52,43 @@ var styles = [
       { "invert_lightness": true }
     ]
   }
-]
+  ];
 
-
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'This is not where you are, right?';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
-
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
+  var mapOptions = {
+    zoom: 20,
+    center: userPosition,
+    disableDefaultUI: true,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID
   };
 
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
-  map.setOptions({styles: styles});
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+  // userMarker = new google.maps.Marker({
+  //   position: userPosition,
+  //   map: map,
+  //   icon: userMarkerImage 
+  // });
+
+for (var i = 0; i < coordinateArray.length; i++) {
+      var data = coordinateArray[i]
+      var marker = new google.maps.Marker({
+          position: new google.maps.LatLng (data.latitude, data.longitude),
+          map: map
+      });
+
+  var styledMapOptions = {
+    name: 'Custom Style'
+  };
+
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 }
+}
+
+
 
 google.maps.event.addDomListener(window, 'load', initialize);

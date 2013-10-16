@@ -1,7 +1,7 @@
 function initialize() {
 
   var mapOptions = {
-    zoom: 13,
+    zoom: 3,
   };
   map = new google.maps.Map(document.getElementById('mapCanvas'),
       mapOptions);
@@ -28,13 +28,13 @@ function initialize() {
   }
 }
 
-var styles = [
+var newStyle = [
   {
     "elementType": "labels.text.fill",
     "stylers": [
       { "invert_lightness": true },
       { "gamma": 0.01 },
-      { "hue": "#e500ff" }
+      { "hue": "#e50000" }
     ]
   },{
     "elementType": "geometry",
@@ -65,7 +65,7 @@ function handleNoGeolocation(errorFlag) {
   };
 
   var infowindow = new google.maps.InfoWindow(options);
-   map.setOptions({styles: styles});
+   map.setOptions({styles: newStyle});
    map.setCenter(options.position);
  
 }
