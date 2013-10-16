@@ -5,6 +5,33 @@
 <!-- installs the firebase client -->
 <script src='https://cdn.firebase.com/v0/firebase.js'></script>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<script src="js/google_map.js" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+p {
+  font-size: 2em;
+}
+
+input {
+  height: 100px;
+  width: 30px;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+}
+
+#map-canvas {
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+</style>
 
 
 </head>
@@ -17,6 +44,9 @@
 
 <p id="demo">Click the button to get your coordinates:</p>
 <button onclick="startGeolocation()">Try It</button>
+
+
+<div id="map-canvas"></div>
     
     <script type="text/javascript">
     var x=document.getElementById("demo");
@@ -36,51 +66,11 @@
 
 }
 
+//var marker = Latitude: 59.333501500000004 Longitude: 18.015371
+
 </script>
 
 <script type="text/javascript">
-
-	var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
-      
-    var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
-
-<p id="demo">Click the button to get your coordinates:</p>
-<button onclick="startGeolocation()">Try It</button>
-   
-   <script type="text/javascript">
-   var x=document.getElementById("demo");
-       function startGeolocation() {
-       var options;
-       navigator.geolocation.getCurrentPosition(geoSuccess, options);
-       setTimeout(startGeolocation, 1000);
-       }
-
-</script>
-
-<p id="demo">Click the button to get your coordinates:</p>
-<button onclick="startGeolocation()">Try It</button>
-   
-   <script type="text/javascript">
-   var x=document.getElementById("demo");
-       function startGeolocation() {
-       var options;
-       navigator.geolocation.getCurrentPosition(geoSuccess, options);
-       setTimeout(startGeolocation, 1000);
-       }
-
-       function geoSuccess(position) {
-       var gpsPosition = position;
-       var coordinates = gpsPosition.coords;
-       myLat = coordinates.latitude;
-       myLong = coordinates.longitude;
-       x.innerHTML="Latitude: " + myLat + 
-       "<br>Longitude: " + myLong;
-
-}
-
-</script>
-
-<script>
 
 var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
      
