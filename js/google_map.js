@@ -1,31 +1,8 @@
-    
-
-        var x=document.getElementById("demo");
-
-        function startGeolocation() {
-          var options;
-          navigator.geolocation.getCurrentPosition(geoSuccess, options);
-          setTimeout(startGeolocation, 1000);
-        }
-
-        function geoSuccess(position) {
-          var gpsPosition = position;
-          var coordinates = gpsPosition.coords;
-          myLat = coordinates.latitude;
-          myLong = coordinates.longitude;
-          x.innerHTML="Latitude: " + myLat + 
-          "<br>Longitude: " + myLong;
-
-}
-
-
-// new code ..........
-
 var map;
 
 function initialize() {
   var mapOptions = {
-    zoom: 18,
+    zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -33,9 +10,9 @@ function initialize() {
 
   // Try HTML5 geolocation
   if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position, options) {
+    navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+                                       position.coords.l ongitude);
 
       var infowindow = new google.maps.InfoWindow({
         map: map,
@@ -71,4 +48,3 @@ function handleNoGeolocation(errorFlag) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
