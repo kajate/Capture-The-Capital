@@ -6,7 +6,10 @@
 <script src='https://cdn.firebase.com/v0/firebase.js'></script>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-<script src="js/google_map.js" type="text/javascript"></script>
+<script src="js/google_map.js"></script>
+
+<link href="http://code.google.com//apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css">
+
 
 
 <style type="text/css">
@@ -41,19 +44,16 @@ button {
 <label>Your username: </label><input type="text" id="userName">
 </form>
 
-
 <p id="demo">Click the button to get your coordinates:</p>
 <button onclick="startGeolocation()">Try It</button>
-
-
-<div id="map-canvas"></div>
     
     <script type="text/javascript">
+    
     var x=document.getElementById("demo");
         function startGeolocation() {
         var options;
         navigator.geolocation.getCurrentPosition(geoSuccess, options);
-        setTimeout(startGeolocation, 1000);
+        setInterval(startGeolocation, 1000);
         }
 
         function geoSuccess(position) {
@@ -66,9 +66,10 @@ button {
 
 }
 
-//var marker = Latitude: 59.333501500000004 Longitude: 18.015371
-
 </script>
+
+    <div id="map-canvas"></div>
+
 
 <script type="text/javascript">
 
