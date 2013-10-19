@@ -3,7 +3,10 @@ body {
 }
 
 #map {
-	position:relative; top:0; bottom:0; width:100%;
+	position:relative;
+    top:0;
+    bottom:0;
+    width:100%;
 	z-index: 1;
 }
 
@@ -23,15 +26,15 @@ body {
 }
 
 .box {
-width: 150px;
-height: 15px;
-background-color: rgba(235,235,235,0.7);
-font-family: tahoma;
-border-radius: 7px;
-border: solid black;
-font-size: small;
-color: rgba(0,0,0,0.7);
-margin-top: 15px;
+    width: 150px;
+    height: 15px;
+    background-color: rgba(235,235,235,0.7);
+    font-family: tahoma;
+    border-radius: 7px;
+    border: solid black;
+    font-size: small;
+    color: rgba(0,0,0,0.7);
+    margin-top: 15px;
 }
 
 .flagimages {
@@ -87,4 +90,4 @@ margin-top: 15px;
     to {
         opacity: 1;
     }
-}​
+    }​
