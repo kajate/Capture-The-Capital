@@ -1,7 +1,7 @@
 function initialize() {
 
   var mapOptions = {
-    zoom: 3,
+    zoom: 7,
     disableDefaultUI: true,
   };
   map = new google.maps.Map(document.getElementById('mapCanvas'),
@@ -74,7 +74,7 @@ function handleNoGeolocation(errorFlag) {
 
   var options = {
     map: map,
-    position: new google.maps.LatLng(60, 105),
+    position: new google.maps.LatLng(59, 18),
     content: content
   };
 
