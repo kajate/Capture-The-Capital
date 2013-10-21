@@ -78,12 +78,10 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
            myDataRef.push({ name: name });
           
           localStorage.setItem('userName', name);
-          var userName = localStorage.getItem('userName');
-          alert('your username is: ' + userName);
-
        }
+          var userName = localStorage.getItem('userName');
+          document.write('your username is: ' + userName);
    }
-
 });
 
    </script>
