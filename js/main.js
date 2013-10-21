@@ -6,6 +6,17 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('mapCanvas'),
       mapOptions);
 
+  var center;
+function calculateCenter() {
+  center = map.getCenter();
+}
+google.maps.event.addDomListener(map, 'idle', function() {
+  calculateCenter();
+});
+google.maps.event.addDomListener(window, 'resize', function() {
+  map.setCenter(center);
+});
+
   
 
   if(navigator.geolocation) {
