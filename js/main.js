@@ -1,10 +1,24 @@
 function initialize() {
 
   var mapOptions = {
-    zoom: 3,
+    zoom: 13,
+    disableDefaultUI: true,
   };
   map = new google.maps.Map(document.getElementById('mapCanvas'),
       mapOptions);
+
+  var center;
+function calculateCenter() {
+  center = map.getCenter();
+}
+google.maps.event.addDomListener(map, 'idle', function() {
+  calculateCenter();
+});
+google.maps.event.addDomListener(window, 'resize', function() {
+  map.setCenter(center);
+}); //Keeps the content centered
+
+
 
   
 
@@ -53,14 +67,14 @@ var newStyle = [
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
-    var content = 'This is not where you are, right?';
+    var content = 'Error: Could not define your geolocation';
   } else {
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
 
   var options = {
     map: map,
-    position: new google.maps.LatLng(60, 105),
+    position: new google.maps.LatLng(59.326640, 18),
     content: content
   };
 
