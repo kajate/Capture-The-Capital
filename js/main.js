@@ -1,7 +1,7 @@
 function initialize() {
 
   var mapOptions = {
-    zoom: 10,
+    zoom: 13,
     disableDefaultUI: true,
   };
   map = new google.maps.Map(document.getElementById('mapCanvas'),
@@ -67,7 +67,7 @@ var newStyle = [
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
-    var content = 'This is not where you are, right?';
+    var content = 'Error: Could not define your geolocation';
   } else {
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
