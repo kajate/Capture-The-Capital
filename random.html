@@ -3,11 +3,73 @@
 	<title>Script for random</title>
 
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-	<script src="js/random.js" type="text/javascript"></script>
 
+	<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+
+	<script type="text/javascript">
+
+		var map;
+
+		function initialize() {
+        
+        //here is the starting for the map, where it will begin to show
+        var latlng = new google.maps.LatLng(59.2982762, 17.9970823);
+
+        var myOptions = {
+          zoom: 13,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+          //below are the markers coordinates, change it to your coordinates
+        	var map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+
+          	var flagAreas = [
+
+          [59.2967322, 18.0009393],
+          [59.2980245, 17.9971503],
+          [59.2981078, 17.9980875],
+          [59.2982762, 17.9970823],
+          [59.2987638, 17.9917639],
+          [59.2987649, 17.9917824],
+          [59.2987847, 17.9917731],
+          [59.2988498, 17.991684],
+          [59.2988503, 17.9981593],
+          [59.3008233, 18.0041763],
+          [59.3014033, 18.0068793],
+          [59.3016619, 18.0137766]
+          ];
+
+      		var random = flagAreas.sort(function() {
+      			(Math.round(Math.random())) - 0.5 })[0];
+
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(random[0], random[1]),
+              map: map,
+            });
+        }
+
+        window.onload = initialize;
+
+    </script>
+
+    <style type="text/css">
+
+    #map-canvas {
+    	width: 800px;
+    	height: 900px;
+    	position: absolute;
+    	z-index: 1;
+    }
+
+    </style>
 
 </head>
 <body>
+
+	<div id="map-canvas"></div>
+    <div class="break">
+    </div><!-- end break -->
+
 
 </body>
 </html>
