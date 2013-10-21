@@ -2,6 +2,7 @@ function initialize() {
 
   var mapOptions = {
     zoom: 3,
+    disableDefaultUI: true,
   };
   map = new google.maps.Map(document.getElementById('mapCanvas'),
       mapOptions);
@@ -15,7 +16,9 @@ google.maps.event.addDomListener(map, 'idle', function() {
 });
 google.maps.event.addDomListener(window, 'resize', function() {
   map.setCenter(center);
-});
+}); //Keeps the content centered
+
+
 
   
 
