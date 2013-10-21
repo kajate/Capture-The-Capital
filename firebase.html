@@ -10,28 +10,17 @@
 
 <link href="http://code.google.com//apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css">
 
-
-
 <style type="text/css">
 
 p {
   font-size: 2em;
 }
 
-input {
-  height: 100px;
-  width: 30px;
-}
-
-button {
-  width: 100px;
-  height: 40px;
-}
-
 #map-canvas {
   height: 400px;
   width: 400px;
   margin: 0 auto;
+  display: none;
 }
 
 </style>
@@ -49,22 +38,22 @@ button {
     
     <script type="text/javascript">
     
-    var x=document.getElementById("demo");
-        function startGeolocation() {
-        var options;
-        navigator.geolocation.getCurrentPosition(geoSuccess, options);
-        setInterval(startGeolocation, 1000);
-        }
+    //var x=document.getElementById("demo");
+    //    function startGeolocation() {
+    //    var options;
+    //    navigator.geolocation.getCurrentPosition(geoSuccess, options);
+    //    setInterval(startGeolocation, 1000);
+    //    }
 
-        function geoSuccess(position) {
-        var gpsPosition = position;
-        var coordinates = gpsPosition.coords;
-        myLat = coordinates.latitude;
-        myLong = coordinates.longitude;
-        x.innerHTML="Latitude: " + myLat + 
-        "<br>Longitude: " + myLong;
+    //    function geoSuccess(position) {
+    //    var gpsPosition = position;
+    //    var coordinates = gpsPosition.coords;
+    //    myLat = coordinates.latitude;
+    //    myLong = coordinates.longitude;
+    //    x.innerHTML="Latitude: " + myLat + 
+    //    "<br>Longitude: " + myLong;
 
-}
+//}
 
 </script>
 
@@ -87,8 +76,14 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
        else {
            var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
            myDataRef.push({ name: name });
+          
+          localStorage.setItem('userName', name);
+          var userName = localStorage.getItem('userName');
+          alert('your username is: ' + userName);
+
        }
    }
+
 });
 
    </script>
