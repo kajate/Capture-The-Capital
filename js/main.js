@@ -53,13 +53,13 @@ var newStyle = [
   },{
     "elementType": "geometry",
     "stylers": [
-      { "hue": "#00fff7" }
+      { "hue": "#dddd00" }
     ]
   },{
     "stylers": [
       { "gamma": 0.78 },
       { "visibility": "on" },
-      { "invert_lightness": true }
+      { "invert_lightness": false }
     ]
   }
 ]
