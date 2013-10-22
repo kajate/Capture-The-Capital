@@ -46,14 +46,14 @@ var newStyle = [
   {
     "elementType": "labels.text.fill",
     "stylers": [
-      { "invert_lightness": true },
-      { "gamma": 0.01 },
-      { "hue": "#e50000" }
+      { "invert_lightness": false },
+      { "gamma": 0.71 },
+      { "hue": "#000" }
     ]
   },{
     "elementType": "geometry",
     "stylers": [
-      { "hue": "#dddd00" }
+      { "hue": "#FF8AA5" }
     ]
   },{
     "stylers": [
