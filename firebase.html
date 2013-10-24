@@ -63,8 +63,20 @@ p {
 <script type="text/javascript">
 
 var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
+
+var myUserRef = null;
      
-   var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
+   var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/users');
+   var userName = localStorage.getItem('userName');
+   if (userName) {
+      // do something
+   } else {
+     // generate a user name.
+     userName = "user" + Math.round(Math.random() * 1000);
+     localStorage.setItem("userName", userName);
+     myUserRef = myDataRef.push({ name: userName });
+     localStorage.setItem("userID", myUserRef.name());
+   }
 
    $('#userName').keypress(function (e) {
     if (e.keyCode == 13) {

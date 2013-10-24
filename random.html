@@ -3,10 +3,47 @@
   
   <title>Script for random</title>
 
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
   <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
   <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
   
   <script type="text/javascript">
+
+
+  var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
+
+    var myUserRef = null;
+         
+    var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/users');
+    var userName = localStorage.getItem('userName');
+    if (userName) {
+       // do something
+    } 
+    else {
+      // generate a user name.
+      userName = "user" + Math.round(Math.random() * 1000);
+      localStorage.setItem("userName", userName);
+      myUserRef = myDataRef.push({ name: userName });
+      localStorage.setItem("userID", myUserRef.name());
+    }
+
+    $('#userName').keypress(function (e) {
+     if (e.keyCode == 13) {
+        var name = $('#userName').val();
+
+        if ($.inArray(name, invalidUser) != -1) {
+            alert('Not a valid username')
+        }
+        else {
+            var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/');
+            myDataRef.push({ name: name });
+           
+           localStorage.setItem('userName', name);
+        }
+        var userName = localStorage.getItem('userName');
+        document.write('your username is: ' + userName);
+      }
+    });
 
     var map;
     var random;
@@ -16,6 +53,7 @@
     var distance;
     var pos1;
     var pos2;
+    var myMarker; 
 
     var flagAreas = [
 
@@ -33,6 +71,20 @@
       [59.3016619, 18.0137766]
     ];
 
+
+    function updatePosition(position) {
+      myPosition = new google.maps.LatLng(position.coords.latitude,
+                                                position.coords.longitude);
+      var distance = getDistance(position.coords.latitude, position.coords.longitude, flagAreas[0][0], flagAreas[0][1]);
+      console.log(distance);
+      myMarker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+      // update the position in firebase
+      if (myUserRef) {
+        myUserRef.child("latitude").set(position.coords.latitude);
+        myUserRef.child("longitude").set(position.coords.longitude);
+      }
+    }
+
     function initialize() {
         
         //here is the starting for the map, where it will begin to show
@@ -49,24 +101,31 @@
         //geolocation
 
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-            myPosition = new google.maps.LatLng(position.coords.latitude,
-                                                position.coords.longitude);
+         //   navigator.geolocation.getCurrentPosition(function(position) {
+         //   myPosition = new google.maps.LatLng(position.coords.latitude,
+           //                                     position.coords.longitude);
 
                   //var pos1 = position.coords.latitude;
                   //var pos2 = position.coords.longitude;
                   //console.log(pos1 + ' and ' + pos2);
-
-          var infowindow = new google.maps.InfoWindow({
+          myMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(0,0),
             map: map,
-            position: myPosition,
-            content: "You are here"
+            icon: "images/jogging.png"
           });
+
+          navigator.geolocation.watchPosition(updatePosition);
+
+          // var infowindow = new google.maps.InfoWindow({
+          //   map: map,
+          //   position: myPosition,
+          //   content: "You are here"
+          // });
             
-            map.setCenter(myPosition);
-          },  function() {
-            handleNoGeolocation(true);
-          });
+           // map.setCenter(myPosition);
+         // },  function() {
+           // handleNoGeolocation(true);
+          //});
         }
 
           else {
@@ -127,8 +186,7 @@
     return R * c;
 }
         
-        var distance = getDistance(position.coords.latitude, position.coords.longitude, flagAreas[0], flagAreas[1]);
-        console.log(distance);
+
 
     </script>
 
