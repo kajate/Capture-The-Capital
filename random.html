@@ -83,6 +83,9 @@
         myUserRef.child("latitude").set(position.coords.latitude);
         myUserRef.child("longitude").set(position.coords.longitude);
       }
+      if (distance < 50) {
+        console.log("Rövsmör");
+      }
     }
 
     function initialize() {
