@@ -1,60 +1,116 @@
 body {
     margin:0; padding:0;
-    height: 100%
+     height: 100%;
+     overflow: auto;
 }
 html {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
+
+#map-canvas {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      z-index: 1;
+      overflow: auto;
+    }
 
 #mapCanvas {
-    position:absolute; top:0; bottom:0; width:100%;
-    z-index: 1;
-}
-
-#map {
-	position:fixed;
+    position: absolute;
     top:0;
     bottom:0;
-    width:100%;
+    width: 100%;
+    height: 100%;
     z-index: 1;
+    overflow: auto;
 }
 
-.startboxL {  
+.container {
     position: fixed;
-    margin-left: 2%;
-    max-width: 200px;
-    background-color: rgba(0,255,183,0.5);
-    z-index: 99;
-    width: 100%;
-    height: 100%
+    margin: 42px auto !important;
+    margin-left: 42px !important;
+    background-color: transparent;
+    z-index: 2;
+    width: 330px;
+    height: 340px;
+    overflow: auto;
+    border-radius: 152px;
+ }
+
+.one-third {
+    background-color: transparent;
+    z-index: 98;
+    height: 100%;
+    margin-bottom: 10px !important;
+    margin-left: none !important;
+    margin-right: none !important;
+    width: 310px !important;
+    max-height: auto !important; 
+        border-radius: 202px;
 }
+
+.column {
+    background-color: transparent;
+    z-index: 99;
+    width: 400px;
+    height: 100%;
+        border-radius: 202px;
+
+}
+.nextbutton {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255,255,0,0.3) !important;
+    border-radius: 202px;
+    color: black;
+    border-color: solid black 2px;
+    z-index: 99;
+}
+
+.nextnextbutton {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255,255,0,0.3) !important;
+    border-radius: 4px;
+    color: black;
+    border-color: solid black 2px;
+    z-index: 99;
+}
+.startboxL {  
+    background-color: rgba(250,250,0,1);
+    z-index: 99;
+    min-height: 400px !important; 
+    border: solid 0px rgba(255,0,183,0.1);
+    width: 400px;
+    color: black;
+    border-radius: 2px;
+    border: solid black: 2px;
 }
 
 .startbox { 
-    margin: auto; 
-    position: relative;
-    max-width: 200px;
-    background-color: rgba(255,0,183,0.5);
+    background-color: rgba(250,250,0,1);
     z-index: 99;
-    width: 100%;
-    height: 100%
+    min-height: 300px !important; 
+    width: 404px;
+    color: black;
+    height: 100px;
+    border-radius: 202px;
+    border: solid black 5px;
 }
 
 .startboxR {  
-    position: relative;
-    margin-right: auto;
-    max-width: 200px;
-    background-color: rgba(255,255,0,0.5);
+    background-color: rgba(250,250,0,1);
     z-index: 99;
-    width: 100%;
-    height: 100%
-}
+    min-height: 400px !important; 
+    border: solid 0px rgba(255,0,183,0.1);
+    width: 400px;
+    color: black;
+    border-radius: 2px;
+    border: solid black 2px;
 }
 
-
-.text-box {
-    margin-top: 200px;
+.middle-box {
     font-family: inherit;
     text-shadow: 1px 1px #ffffff;
     font-size: 12px;
@@ -62,13 +118,85 @@ html {
     font-family: helvetica;
     font-size: small;
     color: rgba(0,0,0,1);
-    margin:auto;
-    width: 100%;
-    height: 100%
+        background-color: rgba(250,250,0,1);
+    z-index: 99;
+    min-height: 400px !important; 
+    border: solid 0px rgba(255,0,183,0.1);
+    width: 270px;
+
+    animation: fadein 3.0s;
+    -moz-animation: fadein 3.0s; /* Firefox */
+    -webkit-animation: fadein 3.0s; /* Safari and Chrome */
+    -o-animation: fadein 3.0s; /* Opera */
 }
 
+#one {
+    margin: 0px auto;
+    font-family: inherit;
+    text-shadow: 1px 1px #ffffff;
+    font-size: 12px;
+    text-align: center;
+    font-family: helvetica;
+    font-size: small;
+    color: rgba(0,0,0,1);
+    height: 150px;
+    border-radius: 202px;
+
+    animation: fadein 2.0s;
+    -moz-animation: fadein 1.0s; /* Firefox */
+    -webkit-animation: fadein 1.0s; /* Safari and Chrome */
+    -o-animation: fadein 1.0s; /* Opera */
+}
+#two {
+    margin: 0px auto;
+    font-family: inherit;
+    text-shadow: 1px 1px #ffffff;
+    font-size: 12px;
+    text-align: center;
+    font-family: helvetica;
+    font-size: small;
+    color: rgba(0,0,0,1);
+
+    animation: fadein 1.0s;
+    -moz-animation: fadein 1.0s; /* Firefox */
+    -webkit-animation: fadein 1.0s; /* Safari and Chrome */
+    -o-animation: fadein 1.0s; /* Opera */
+}
+
+.textstyle {
+margin: auto;
+    font-family: inherit;
+    text-shadow: 1px 1px #ffffff;
+    font-size: 12px;
+    text-align: center;
+    font-family: helvetica;
+    font-size: small;
+    color: rgba(0,0,0,1);
+
+    animation: fadein 1.0s;
+    -moz-animation: fadein 1.0s; /* Firefox */
+    -webkit-animation: fadein 1.0s; /* Safari and Chrome */
+    -o-animation: fadein 1.0s; /* Opera */
+}
+
+
+
+/*.text {
+    font-family: inherit;
+    text-shadow: 1px 1px #ffffff;
+    font-size: 12px;
+    text-align: center;
+    font-family: helvetica;
+    font-size: small;
+    color: rgba(0,0,0,1);
+
+    animation: fadein 6.0s;
+    -moz-animation: fadein 6.0s; /* Firefox */
+    -webkit-animation: fadein 6.0s; /* Safari and Chrome */
+}*/
+
 .box {
-    margin-top: 100px;
+    margin: 100px auto !important;
     width: 150px;
     height: 15px;
     font-family: helvetica;
@@ -93,31 +221,42 @@ html {
 .button {
     border: 3px solid;
     border-color: rgba(0,0,0,0.3); 
-    background-color: rgba(235,235,235,1);
+    background-color: black;
     border-radius: 7px;
-    margin-top: 15px;
+    margin: auto !important;
+    z-index: 99;
 
 }
 
-.left
-{
-    margin-left: 4%;
-    width: 100%;
-    height: 100%
+input[type="submit"]{
+    background-color: rgba(0,0,0,0.1);
+    color: white;
 }
-.center
-{
-    margin:auto;
-    width: 100%;
-    height: 100%
+input[type="submit"]:hover{
+    background-color: rgba(0,0,0,0.1); !important;
+    color: black !important;
+}
+input[type="submit"]:focus{
+     background-color: white;
+    color: black;
+}
+input[type="submit"]:active{
+     background-color: white;
+    color: black;
+
 }
 
-.right
-{
-    margin-right: 50%;
-    width: 100%;
-    height: 100%
+
+#middle { 
+    background-color: rgba(250,250,0,1);
+    color: black;
+
+animation: fadein: 6.0s;
+    -moz-animation: fadein 6.0s; /* Firefox */
+    -webkit-animation: fadein 6.0s; /* Safari and Chrome */
+    -o-animation: fadein 6.0s; /* Opera */
 }
+
 .fade {
 
     animation: fadein 1s;
