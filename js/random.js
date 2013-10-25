@@ -74,6 +74,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
       if (distance < 50) {
         alert("YOU CAPTURED THE MAP");
         console.log("Rövsmör");
+        flagAreas.sort();
       }
     }
 
