@@ -71,7 +71,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         myUserRef.child("latitude").set(position.coords.latitude);
         myUserRef.child("longitude").set(position.coords.longitude);
       }
-      if (distance < 1) {
+      if (distance < 50) {
         alert("YOU CAPTURED THE MAP");
         console.log("Rövsmör");
       }
