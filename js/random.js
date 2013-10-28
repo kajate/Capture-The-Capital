@@ -79,13 +79,17 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         myUserRef.child("longitude").set(position.coords.longitude);
       }
       if (distance < 50) {
-        flagPosition=new google.maps.LatLng(59.3016619, 18.0137766);
+        function clearMarkers() {
+  setAllMap(null);
+}
         alert("YOU CAPTURED THE MAP");
+        var flagPosition = new google.maps.LatLng(random[0], random[1]);
         console.log("Rövsmör");
         console.log(flagPosition)
-        flagMarker.setPosition(flagPosition);
-      }
+
+        
     }
+  }
 
     function initialize() {
         
@@ -105,7 +109,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-          var map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+          map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
         //geolocation
 
@@ -164,13 +168,13 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
 
 
 
-
-             flagMarker = new google.maps.Marker({
-              position: new google.maps.LatLng(random[0], random[1]),
-                  map: map,
-                  icon: "images/flagsmall.png",
-    draggable: false,
-    animation: google.maps.Animation.DROP
+        var flagLatLng = new google.maps.LatLng(random[0], random[1]);
+        var flagMarker = new google.maps.Marker({
+              position: flagLatLng,
+              map: map,
+              icon: "images/flagsmall.png",
+              draggable: false,
+              animation: google.maps.Animation.DROP
 
             });
         }
