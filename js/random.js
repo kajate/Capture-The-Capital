@@ -42,6 +42,10 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
     var pos1;
     var pos2;
     var myMarker; 
+    var flagMarker;
+    var flagPosition;
+
+
 
     var flagAreas = [
 
@@ -59,6 +63,9 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
       [59.3016619, 18.0137766]
     ];
 
+    var random = flagAreas.sort(function() {
+    return Math.random() - 0.5 })[0];
+
 
     function updatePosition(position) {
       myPosition = new google.maps.LatLng(position.coords.latitude,
@@ -72,9 +79,11 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         myUserRef.child("longitude").set(position.coords.longitude);
       }
       if (distance < 50) {
+        flagPosition=new google.maps.LatLng(59.3016619, 18.0137766);
         alert("YOU CAPTURED THE MAP");
         console.log("Rövsmör");
-        flagAreas.sort();
+        console.log(flagPosition)
+        flagMarker.setPosition(flagPosition);
       }
     }
 
@@ -155,10 +164,8 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
 
 
 
-          var random = flagAreas.sort(function() {
-          return Math.random() - 0.5 })[0];
 
-            var marker = new google.maps.Marker({
+             flagMarker = new google.maps.Marker({
               position: new google.maps.LatLng(random[0], random[1]),
                   map: map,
                   icon: "images/flagsmall.png",
