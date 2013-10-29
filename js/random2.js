@@ -1,16 +1,4 @@
-<html>
-<head>
-  
-  <title>Script for random</title>
-
-  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-  <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-  
-  <script type="text/javascript">
-
-
-  var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
+var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
 
     var myUserRef = null;
          
@@ -58,6 +46,7 @@
     var flagAreas = [
 
       [59.2967322, 18.0009393],
+      [59.285932, 17.964427],
       [59.2980245, 17.9971503],
       [59.2981078, 17.9980875],
       [59.2982762, 17.9970823],
@@ -83,8 +72,11 @@
         myUserRef.child("latitude").set(position.coords.latitude);
         myUserRef.child("longitude").set(position.coords.longitude);
       }
-      if (distance < 5) {
+      if (distance < 10) {
+        alert("YOU CAPTURED THE MAP");
         console.log("Rövsmör");
+        flagAreas.sort();
+        updatePosition;
       }
     }
 
@@ -94,9 +86,17 @@
         var latlng = new google.maps.LatLng(59.2982762, 17.9970823);
 
         var myOptions = {
-          zoom: 13,
+          zoom: 15,
           center: latlng,
+          panControl: false,
+          zoomControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          scrollwheel: false,
+          navigationControl: true,
+          streetViewControl: false,
           mapTypeId: google.maps.MapTypeId.ROADMAP
+
         };
 
           var map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -111,24 +111,26 @@
                   //var pos1 = position.coords.latitude;
                   //var pos2 = position.coords.longitude;
                   //console.log(pos1 + ' and ' + pos2);
+          
           myMarker = new google.maps.Marker({
             position: new google.maps.LatLng(0,0),
             map: map,
             icon: "images/jogging.png"
+
           });
 
           navigator.geolocation.watchPosition(updatePosition);
 
-          // var infowindow = new google.maps.InfoWindow({
-          //   map: map,
-          //   position: myPosition,
-          //   content: "You are here"
-          // });
+         //  var infowindow = new google.maps.InfoWindow({
+         //    map: map,
+         //    position: myPosition,
+         //    content: "You are here"
+         //  });
             
-           // map.setCenter(myPosition);
+         //   map.setCenter(myPosition);
          // },  function() {
-           // handleNoGeolocation(true);
-          //});
+         //   handleNoGeolocation(true);
+         //  });
         }
 
           else {
@@ -154,12 +156,18 @@
 
         //start random markers/flags
 
+
+
           var random = flagAreas.sort(function() {
           return Math.random() - 0.5 })[0];
 
             var marker = new google.maps.Marker({
               position: new google.maps.LatLng(random[0], random[1]),
-              map: map,
+                  map: map,
+                  icon: "images/flagsmall.png",
+    draggable: false,
+    animation: google.maps.Animation.DROP
+
             });
         }
 
@@ -188,28 +196,3 @@
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     return R * c;
 }
-        
-
-
-    </script>
-
-    <style type="text/css">
-
-    #map-canvas {
-      width: 700px;
-      height: 900px;
-      margin: 0 auto;
-    }
-
-    </style>
-
-</head>
-<body>
-
-  <div id="map-canvas"></div>
-    <div class="break">
-    </div><!-- end break -->
-
-
-</body>
-</html>
