@@ -1,6 +1,7 @@
 var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
 
     var myUserRef = null;
+    var randName;
          
     var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/users');
     var userName = localStorage.getItem('userName');
@@ -9,10 +10,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
     } 
     else {
       // generate a user name.
-      userName = "user" + Math.round(Math.random() * 1000);
-      localStorage.setItem("userName", userName);
-      myUserRef = myDataRef.push({ name: userName });
-      localStorage.setItem("userID", myUserRef.name());
+      generateUser();
     }
 
     $('#userName').keypress(function (e) {
@@ -102,8 +100,8 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
           panControl: false,
           zoomControl: false,
           mapTypeControl: false,
-          scaleControl: false,
-          scrollwheel: false,
+          scaleControl: true,
+          scrollwheel: true,
           navigationControl: false,
           streetViewControl: false,
           mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -203,4 +201,16 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
             Math.sin(dLon/2) * Math.sin(dLon/2); 
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     return R * c;
+}
+
+function generateUser() {
+      var r = Math.floor(Math.random() * 20) + 1
+      var randName = ['berra', 'maddo', 'morsan', 'thompa', 'erick', 'ralle', 'bernte', 
+      'bull', 'bulan', 'sulan', 'koppen', 'pickan', 'karlsson', 'sjuan', 'muffe', 'georg', 'maggan', 'basse', 'goran', 'stanley']
+      userName = randName[r];
+      console.log(userName)
+      localStorage.setItem("userName", userName);
+      myUserRef = myDataRef.push({ name: userName });
+      localStorage.setItem("userID", myUserRef.name());
+      return randName;
 }
