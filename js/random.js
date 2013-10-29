@@ -43,7 +43,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
     var pos2;
     var myMarker; 
     var flagMarker;
-    var flagPosition;
+    var flagLatLng;
 
 
 
@@ -79,15 +79,9 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         myUserRef.child("longitude").set(position.coords.longitude);
       }
       if (distance < 50) {
-        function clearMarkers() {
-  setAllMap(null);
-}
-        alert("YOU CAPTURED THE MAP");
-        var flagPosition = new google.maps.LatLng(random[0], random[1]);
-        console.log("Rövsmör");
-        console.log(flagPosition)
+        alert("You captured the flag! GREAT STUFF")
+        window.location.replace("http://www.google.com");
 
-        
     }
   }
 
@@ -110,7 +104,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         };
 
           map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-
+          flagFlag();
         //geolocation
 
         if (navigator.geolocation) {
@@ -168,6 +162,9 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
 
 
 
+      
+        }
+  function flagFlag() {
         var flagLatLng = new google.maps.LatLng(random[0], random[1]);
         var flagMarker = new google.maps.Marker({
               position: flagLatLng,
@@ -177,8 +174,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
               animation: google.maps.Animation.DROP
 
             });
-        }
-
+}       
         window.onload = initialize;
 
         //code to calcute
