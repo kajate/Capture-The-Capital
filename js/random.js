@@ -78,7 +78,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
       }
       if (distance < 50) {
         alert("You captured the flag! GREAT STUFF")
-        window.location.replace("http://www.google.com");
+        window.location.replace("http://karlp.se/stuff/capture/location.html");
 
     }
   }
