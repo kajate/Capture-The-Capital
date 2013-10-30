@@ -5,8 +5,10 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
          
     var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/users');
     var userName = localStorage.getItem('userName');
+    var userID = localStorage.getItem('userID');
     if (userName) {
        // do something
+       myUserRef = new Firebase('https://leastflyingwasps.firebaseio.com/users/' + userID);
     } 
     else {
       // generate a user name.
@@ -201,9 +203,29 @@ function generateUser() {
       var randName = ['berra', 'maddo', 'morsan', 'thompa', 'erick', 'ralle', 'bernte', 
       'bull', 'bulan', 'sulan', 'koppen', 'pickan', 'karlsson', 'sjuan', 'muffe', 'georg', 'maggan', 'basse', 'goran', 'stanley']
       userName = randName[r];
-      console.log(userName)
       localStorage.setItem("userName", userName);
       myUserRef = myDataRef.push({ name: userName });
       localStorage.setItem("userID", myUserRef.name());
       return randName;
 }
+
+var userMarkers = {};
+
+myDataRef.on("value", function(snapshot) {
+  var users = snapshot.val();
+  for (id in users) {
+    var user = users[id];
+    var userMarker = userMarkers[id];
+    var position = new google.maps.LatLng(user.latitude, user.longitude);
+    if (!userMarker) {
+      userMarker = new google.maps.Marker({
+        position: position,
+        map: map,
+        icon: "images/jogging.png"
+      });
+      userMarkers[id] = userMarker;
+    } else {
+      userMarker.setPosition(position);
+    }
+  }
+});
