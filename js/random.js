@@ -77,7 +77,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         myUserRef.child("longitude").set(position.coords.longitude);
         myUserRef.child("lastUpdatedAt").set(Firebase.ServerValue.TIMESTAMP);
       }
-      if (distance < 5) {
+      if (distance < 20) {
         repositionFlag();
         alert("You captured the flag! GREAT STUFF");
     }
@@ -122,7 +122,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
           myMarker = new google.maps.Marker({
             position: new google.maps.LatLng(0,0),
             map: map,
-            icon: "images/jogging.png"
+            icon: "images/jogging.png",
 
           });
 
