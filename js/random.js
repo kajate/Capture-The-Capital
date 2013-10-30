@@ -77,7 +77,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         myUserRef.child("longitude").set(position.coords.longitude);
         myUserRef.child("lastUpdatedAt").set(Firebase.ServerValue.TIMESTAMP);
       }
-      if (distance < 20) {
+      if (distance < 50) {
         repositionFlag();
         alert("You captured the flag! GREAT STUFF");
     }
@@ -233,7 +233,7 @@ myDataRef.on("value", function(snapshot) {
     var userMarker = userMarkers[id];
     var position = new google.maps.LatLng(user.latitude, user.longitude);
     var lastUpdatedAt = parseFloat(user.lastUpdatedAt);
-    if ((new Date().getTime() - lastUpdatedAt) > 0000) {
+    if ((new Date().getTime() - lastUpdatedAt) > 10000) {
       if (userMarker) {
         userMarker.setMap(null);
         delete userMarkers[id];
