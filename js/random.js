@@ -215,7 +215,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
 
 function generateUser() {
       var r = Math.floor(Math.random() * 20) + 1
-      var randName = 'Berra', 'Maddo', 'MORSAN', 'Thompa', 'ERIK', 'Ralle', 'BERNTE', 
+      var randName = ['Berra', 'Maddo', 'MORSAN', 'Thompa', 'ERIK', 'Ralle', 'BERNTE', 
       'Bulle', 'BULAN', 'Sulan', 'KOPPEN', 'Pickan', 'KARLSSON', 'Sjuan', 'MUFFE', 'Georg', 'MAGGEN', 'Basse', 'GORAN', 'Stanley']
       userName = randName[r];
       localStorage.setItem("userName", userName);
