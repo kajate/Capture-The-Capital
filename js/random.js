@@ -4,6 +4,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
     var randName;
          
     var myDataRef = new Firebase('https://leastflyingwasps.firebaseio.com/users');
+    var myFlagRef = new Firebase('https://leastflyingwasps.firebaseio.com/flag');
     var userName = localStorage.getItem('userName');
     var userID = localStorage.getItem('userID');
     if (userName) {
@@ -60,27 +61,33 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
       [59.298412, 17.992349]
     ];
 
-    var random = flagAreas.sort(function() {
-    return Math.random() - 0.5 })[0];
 
+    var random = flagAreas[0];
+    var flagPosition = flagAreas[0];
 
     function updatePosition(position) {
       myPosition = new google.maps.LatLng(position.coords.latitude,
                                                 position.coords.longitude);
-      var distance = getDistance(position.coords.latitude, position.coords.longitude, flagAreas[0][0], flagAreas[0][1]);
+      var distance = getDistance(position.coords.latitude, position.coords.longitude, flagPosition[0], flagPosition[1]);
       console.log(distance);
       myMarker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
       // update the position in firebase
       if (myUserRef) {
         myUserRef.child("latitude").set(position.coords.latitude);
         myUserRef.child("longitude").set(position.coords.longitude);
+        myUserRef.child("lastUpdatedAt").set(Firebase.ServerValue.TIMESTAMP);
       }
-      if (distance < 50) {
-        alert("You captured the flag! GREAT STUFF")
-        window.location.replace("http://karlp.se/stuff/capture/location.html");
-
+      if (distance < 20) {
+        repositionFlag();
+        alert("You captured the flag! GREAT STUFF");
     }
   }
+
+    function repositionFlag() {
+      var random = Math.floor(Math.random() * flagAreas.length);
+      flagPosition = flagAreas[random];
+      myFlagRef.set({ latitude: flagPosition[0], longitude: flagPosition[1] });
+    }
 
     function initialize() {
         
@@ -101,7 +108,6 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         };
 
           map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-          flagFlag();
         //geolocation
 
         if (navigator.geolocation) {
@@ -161,17 +167,26 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
 
       
         }
-  function flagFlag() {
-        var flagLatLng = new google.maps.LatLng(random[0], random[1]);
-        var flagMarker = new google.maps.Marker({
-              position: flagLatLng,
+
+        var flagLatLng;
+        var flagMarker;
+
+        myFlagRef.on("value", function(snapshot) {
+          var flag = snapshot.val();
+          var position = new google.maps.LatLng(flag.latitude, flag.longitude);
+          if (!flagMarker) {
+            flagMarker  = new google.maps.Marker({
               map: map,
+              position: position,
               icon: "images/flagsmall.png",
               draggable: false,
               animation: google.maps.Animation.DROP
-
             });
-}       
+          } else {
+            flagMarker.setPosition(position);
+          }
+        });
+
         window.onload = initialize;
 
         //code to calcute
@@ -217,15 +232,23 @@ myDataRef.on("value", function(snapshot) {
     var user = users[id];
     var userMarker = userMarkers[id];
     var position = new google.maps.LatLng(user.latitude, user.longitude);
-    if (!userMarker) {
-      userMarker = new google.maps.Marker({
-        position: position,
-        map: map,
-        icon: "images/jogging.png"
-      });
-      userMarkers[id] = userMarker;
+    var lastUpdatedAt = parseFloat(user.lastUpdatedAt);
+    if ((new Date().getTime() - lastUpdatedAt) > 0000) {
+      if (userMarker) {
+        userMarker.setMap(null);
+        delete userMarkers[id];
+      }
     } else {
-      userMarker.setPosition(position);
+        if (!userMarker) {
+        userMarker = new google.maps.Marker({
+          position: position,
+          map: map,
+          icon: "images/jogging.png"
+        });
+        userMarkers[id] = userMarker;
+      } else {
+        userMarker.setPosition(position);
+      }
     }
   }
 });
