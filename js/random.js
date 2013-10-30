@@ -1,4 +1,4 @@
-var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','fittan','kuken','anusen','kukar','666',''];
+var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan', 'penis', 'penisar', 'sexist', 'nazist', 'rasist', 'fittan','kuken','anusen','kukar','666',''];
 
     var myUserRef = null;
     var randName;
@@ -51,10 +51,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
       [59.2980245, 17.9971503],
       [59.2981078, 17.9980875],
       [59.2982762, 17.9970823],
-      [59.2987638, 17.9917639],
-      [59.2987649, 17.9917824],
-      [59.2987847, 17.9917731],
-      [59.2988498, 17.991684],
+      [59.2987638, 17.9917639], 
       [59.2988503, 17.9981593],
       [59.3008233, 18.0041763],
       [59.3014033, 18.0068793],
@@ -78,7 +75,7 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
       }
       if (distance < 50) {
         alert("You captured the flag! GREAT STUFF")
-        window.location.replace("http://karlp.se/stuff/capture/location.html");
+        window.location.replace("http://www.karlp.se/stuff/capture/location.html");
 
     }
   }
@@ -89,12 +86,12 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
         var latlng = new google.maps.LatLng(59.2982762, 17.9970823);
 
         var myOptions = {
-          zoom: 15,
+          zoom: 14,
           center: latlng,
           panControl: false,
           zoomControl: false,
-          mapTypeControl: false,
-          scaleControl: true,
+          mapTypeControl: true,
+          scaleControl: false,
           scrollwheel: true,
           navigationControl: false,
           streetViewControl: false,
@@ -201,8 +198,8 @@ var invalidUser=['bajs','kiss','fitta','kuk','slida','anus','slidor','slidan','f
 
 function generateUser() {
       var r = Math.floor(Math.random() * 20) + 1
-      var randName = ['berra', 'maddo', 'morsan', 'thompa', 'erick', 'ralle', 'bernte', 
-      'bull', 'bulan', 'sulan', 'koppen', 'pickan', 'karlsson', 'sjuan', 'muffe', 'georg', 'maggan', 'basse', 'goran', 'stanley']
+      var randName = ['Berra', 'Maddo', 'MORSAN', 'Thompa', 'ERIK', 'Ralle', 'BERNTE', 
+      'Bulle', 'BULAN', 'Sulan', 'KOPPEN', 'Pickan', 'KARLSSON', 'Sjuan', 'MUFFE', 'Georg', 'MAGGEN', 'Basse', 'GORAN', 'Stanley']
       userName = randName[r];
       console.log(userName)
       localStorage.setItem("userName", userName);

@@ -198,6 +198,23 @@ animation: fadein 1.5s !important;
     -o-animation: fadein 1.0s; /* Opera */
 }
 
+.thetext {
+    position: fixed;
+    background-color: rgba(255,255,88,1);
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    height: 180px;
+    width: 250px; !important;
+    margin: 3% auto;
+    margin-left: 3%;
+    text-align: left;
+    font-family: 'Contrail One', cursive;
+    font-size: small;
+overflow:scroll;
+}
+
 #two {    
     position: fixed;
     top: 22px;
