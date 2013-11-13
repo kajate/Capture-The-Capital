@@ -244,6 +244,7 @@ overflow:scroll;
 }
 
 .nextbutton {
+
  
 }
 
@@ -302,8 +303,8 @@ overflow:scroll;
 }
 
 .button {
-    width: 30px;
-    height: 14px;
+    width: 60px;
+    height: 13px;
     background-color: rgba(0,0,0,1) !important;
     border-radius: 5px;
     border-color: solid black 2px;

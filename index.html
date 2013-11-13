@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/karusell.css">
 	<link href='http://fonts.googleapis.com/css?family=Codystar|Contrail+One|Reenie+Beanie|Six+Caps' rel='stylesheet' type='text/css'>
 
 	<!--[if lt IE 9]>
@@ -34,8 +34,7 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
 	<script src="http://code.jquery.com/jquery-1.7.2.min.js" type="text/javascript"></script>
-		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
-
+	<script type="text/javascript" href="js/jquery.carouFredSel-6.2.1"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 	<script src='https://cdn.firebase.com/v0/firebase.js'></script> 
 	<script src='js/navigation.js'></script>
@@ -56,36 +55,44 @@
 				<div class="one-third column startbox">
 					<img src="images/flag.png" class="flagimages">
 					<br><br><br>
-				<!-- 	<div class="thetext"> -->
+					<div class="thetext">
+						<div class="image_carousel">
 
-<!-- 						<div class="flexslider">
-							<ul class="slides">
-								<li>
-									HEJ
-								</li>
-								<li>
-									ARLSE			
-								</li>
-								<li>
-									BULAR
-								</li>
-								<li>
-									Genesis
-								</li>
-							</ul>
-						</div> -->
-<a href="#text-box" id="nextButton" class="button">HERE</a> to get started!<br>
-				<!-- 	</div>	 -->
+							<div id="foo1">
+
+								<ul>
+									<li>1</li>
+									<li>2</li>
+									<li>3</li>
+									<li>4</li>
+								</ul>
+
+
+										</div>
+
+										<div class="clearfix"></div>
+
+										<a class="prev" id="foo1_prev" href="#"><span>prev</span></a>
+
+										<a class="next" id="foo1_next" href="#"><span>next</span></a>
+
+									</div>
+
+								</div><!-- /.carousel -->
+								<a href="#text-box" id="nextButton" class="button">HERE</a> to get started!<br>
+								<!-- 	</div>	 -->
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<div id="map-canvas"></div>
+			<div id="map-canvas"></div>
 
-	<script type="text/javascript">
-	$(window).load(function() {
-  $('.flexslider').flexslider({
-  });
-});</script>
-</body>
-</html>
+			<script type="text/javascript">
+			$("#foo1").carouFredSel({
+				auto : false,
+				prev : "#foo1_prev",
+				next : "#foo1_next"
+			});
+			</script>
+		</body>
+		</html>
